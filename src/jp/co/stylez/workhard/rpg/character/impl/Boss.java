@@ -9,7 +9,7 @@ import jp.co.stylez.workhard.rpg.common.Constants.CharacterName;
 import jp.co.stylez.workhard.rpg.common.Utils;
 
 /**
- * 勇者
+ * ボス
  * @author y-takahashi
  */
 public class Boss extends AbstractHuman implements BloodTypeAB {

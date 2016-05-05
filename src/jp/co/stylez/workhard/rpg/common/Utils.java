@@ -50,6 +50,11 @@ public class Utils {
 		} else {
 			prefix = "INFO: ";
 		}
+		try {
+			Thread.sleep(1500);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
 		System.out.println(prefix + message);
 	}
 
