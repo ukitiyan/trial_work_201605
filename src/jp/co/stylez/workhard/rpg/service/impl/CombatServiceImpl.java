@@ -5,7 +5,7 @@ import static jp.co.stylez.workhard.rpg.common.Utils.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import jp.co.stylez.workhard.rpg.character.AbstractHuman;
+import jp.co.stylez.workhard.rpg.character.AbstractCharacter;
 import jp.co.stylez.workhard.rpg.character.BloodTypeA;
 import jp.co.stylez.workhard.rpg.character.BloodTypeB;
 import jp.co.stylez.workhard.rpg.character.impl.Boss;
@@ -22,11 +22,11 @@ public class CombatServiceImpl implements CombatService {
 	 * @see jp.co.stylez.workhard.rpg.service.CombatService#attack(java.util.List, jp.co.stylez.workhard.rpg.character.impl.Boss)
 	 */
 	@Override
-	public void attack(List<AbstractHuman> party, Boss boss) {
+	public void attack(List<AbstractCharacter> party, Boss boss) {
 		int count = 1;
 		while (true) {
 			// 味方のターン
-			for (AbstractHuman character : party) {
+			for (AbstractCharacter character : party) {
 				if (character instanceof BloodTypeA) {
 					((BloodTypeA) character).attack(boss);
 					if (!boss.isLife()) {
@@ -53,13 +53,16 @@ public class CombatServiceImpl implements CombatService {
 		}
 	}
 
+	/* (非 Javadoc)
+	 * @see jp.co.stylez.workhard.rpg.service.CombatService#escape(java.util.List, jp.co.stylez.workhard.rpg.character.impl.Boss)
+	 */
 	@Override
-	public void escape(List<AbstractHuman> party, Boss boss) {
+	public void escape(List<AbstractCharacter> party, Boss boss) {
 		int count = 1;
 		while (true) {
 			// 味方のターン
 			boolean allEscape = true;
-			for (AbstractHuman character : party) {
+			for (AbstractCharacter character : party) {
 				if (!((BloodTypeA) character).escape()) {
 					allEscape = false;
 				}
@@ -79,15 +82,20 @@ public class CombatServiceImpl implements CombatService {
 		}
 	}
 
+	/* (非 Javadoc)
+	 * @see jp.co.stylez.workhard.rpg.service.CombatService#sage(java.util.List, jp.co.stylez.workhard.rpg.character.impl.Boss)
+	 */
 	@Override
-	public void sage(List<AbstractHuman> party, Boss boss) {
-		List<AbstractHuman> partyWithWiseMan = new ArrayList<AbstractHuman>();
+	public void sage(List<AbstractCharacter> party, Boss boss) {
+		List<AbstractCharacter> partyWithWiseMan = new ArrayList<AbstractCharacter>();
 		partyWithWiseMan.addAll(party);
-		for (AbstractHuman character : party) {
+		// 魔法使いが召喚
+		for (AbstractCharacter character : party) {
 			if (character instanceof Witch) {
 				partyWithWiseMan.add(((Witch) character).sage());
 			}
 		}
+		// 戦闘
 		attack(partyWithWiseMan, boss);
 	}
 

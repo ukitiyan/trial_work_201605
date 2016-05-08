@@ -29,9 +29,9 @@ public class Constants {
 	}
 
 	/**
-	 * キャラクターの名前の定義
+	 * キャラクターのデフォルト名前の定義
 	 */
-	public class CharacterName {
+	public class DefaultCharacterName {
 		/** 勇者の名前 */
 		public static final String BRAVE = "ゆうしゃ";
 		/** 魔法使いの名前 */
@@ -43,9 +43,9 @@ public class Constants {
 	}
 
 	/**
-	 * キャラクターのHPの定義
+	 * キャラクターのデフォルトHPの定義
 	 */
-	public class CharacterHp {
+	public class DefaultCharacterHp {
 		/** 勇者のHP */
 		public static final int BRAVE = 100;
 		/** 魔法使いのHP */

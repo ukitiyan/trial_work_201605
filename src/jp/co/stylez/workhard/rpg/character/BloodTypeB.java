@@ -10,7 +10,7 @@ public interface BloodTypeB {
 	 * 攻撃します。
 	 * @param target
 	 */
-	public void attack(AbstractHuman target);
+	public void attack(AbstractCharacter target);
 
 	/**
 	 * 眠ります。

@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-import jp.co.stylez.workhard.rpg.character.AbstractHuman;
+import jp.co.stylez.workhard.rpg.character.AbstractCharacter;
 import jp.co.stylez.workhard.rpg.character.impl.Boss;
 import jp.co.stylez.workhard.rpg.character.impl.Brave;
 import jp.co.stylez.workhard.rpg.character.impl.Witch;
@@ -38,14 +38,17 @@ public class CombatJob {
 			return;
 		}
 
+		// コマンド設定
 		String command = args[0];
 		String dateFormat = args[1];
 		SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
 
-		log(sdf.format(new Date()) + ": 戦闘が開始されました。");
+		// キャラクター設定
+		List<AbstractCharacter> party = Arrays.asList(new Brave("ゆうしゃ", 100), new Witch("まほうつかい", 50));
+		Boss boss = new Boss("ぼす", 10000);
 
-		List<AbstractHuman> party = Arrays.asList(new Brave(), new Witch());
-		Boss boss = new Boss();
+		// 戦闘開始
+		log(sdf.format(new Date()) + ": 戦闘が開始されました。");
 
 		CombatService combatService = new CombatServiceImpl();
 		if (Command.ATTACK.equals(command)) {

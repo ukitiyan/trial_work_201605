@@ -10,7 +10,7 @@ public interface BloodTypeA {
 	 * 攻撃します。
 	 * @param target
 	 */
-	public void attack(AbstractHuman target);
+	public void attack(AbstractCharacter target);
 
 	/**
 	 * 逃走を試みて成功の場合、trueを返します。
